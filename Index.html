@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snapshot Roster System</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #102033;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .card {
+      max-width: 760px;
+      margin: 0 auto;
+      background: white;
+      padding: 48px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .tagline {
+      color: #2b6fd6;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #667;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Snapshot Roster System</h1>
+    <p class="tagline">For Teachers by a Teacher.</p>
+    <p>
+      Offline-first classroom management software for teachers and academies.
+    </p>
+    <p>
+      Attendance, seating charts, grading, reports, and classroom organization — all in one place.
+    </p>
+  </div>
+
+  <footer>
+    Copyright © 2026 Jonah Morris. All rights reserved.
+  </footer>
+</body>
+</html># This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
