@@ -8,56 +8,118 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      color: #102033;
+      background: linear-gradient(135deg, #fff7ed, #f4f6f8);
+      color: #182230;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
       text-align: center;
-      padding: 80px 20px;
     }
 
     .card {
-      max-width: 760px;
-      margin: 0 auto;
+      max-width: 900px;
       background: white;
-      padding: 48px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      padding: 56px 42px;
+      border-radius: 26px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.10);
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 24px;
     }
 
     h1 {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    p {
-      font-size: 20px;
-      line-height: 1.5;
+      font-size: 46px;
+      margin: 0 0 12px;
     }
 
     .tagline {
-      color: #2b6fd6;
+      font-size: 22px;
       font-weight: bold;
+      color: #f97316;
+      margin-bottom: 24px;
+    }
+
+    .description {
+      font-size: 20px;
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto 32px;
+      color: #475467;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .feature {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 16px;
+      padding: 16px;
+      font-weight: bold;
+      color: #7c2d12;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 34px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      background: #f97316;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 8px 18px rgba(249,115,22,0.28);
     }
 
     footer {
-      margin-top: 40px;
+      margin-top: 36px;
       font-size: 14px;
-      color: #667;
+      color: #667085;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Snapshot Roster System</h1>
-    <p class="tagline">For Teachers by a Teacher.</p>
-    <p>
-      Offline-first classroom management software for teachers and academies.
-    </p>
-    <p>
-      Attendance, seating charts, grading, reports, and classroom organization — all in one place.
-    </p>
-  </div>
+  <main class="hero">
+    <section class="card">
+      <img src="assets/logo.png" alt="Snapshot Roster System Logo" class="logo" />
 
-  <footer>
-    Copyright © 2026 Jonah Morris. All rights reserved.
-  </footer>
+      <h1>Snapshot Roster System</h1>
+      <div class="tagline">For Teachers by a Teacher.</div>
+
+      <p class="description">
+        Offline-first classroom management software for teachers and academies.
+        Organize classes, track attendance, manage seating charts, record grades,
+        and prepare reports — all in one simple dashboard.
+      </p>
+
+      <div class="features">
+        <div class="feature">Attendance</div>
+        <div class="feature">Seating Charts</div>
+        <div class="feature">Grades</div>
+        <div class="feature">Reports</div>
+        <div class="feature">Backups</div>
+        <div class="feature">Offline First</div>
+      </div>
+
+      <a class="button" href="#">Coming Soon</a>
+
+      <footer>
+        Copyright © 2026 Jonah Morris. All rights reserved.
+      </footer>
+    </section>
+  </main>
 </body>
+</html>
