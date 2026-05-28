@@ -415,32 +415,37 @@
       border-radius: 30px;
       padding: 46px;
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 28px;
+      grid-template-columns: 180px 1fr;
+      gap: 36px;
       align-items: center;
       box-shadow: 0 18px 46px rgba(249, 115, 22, 0.12);
     }
 
-    .access-badge {
-      width: 92px;
-      height: 92px;
-      border-radius: 28px;
-      background: var(--orange);
-      color: white;
+    .access-icon {
+      width: 128px;
+      height: 128px;
+      border-radius: 32px;
+      background: #ffedd5;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 38px;
-      box-shadow: 0 16px 34px rgba(249, 115, 22, 0.28);
+      box-shadow: 0 18px 35px rgba(249, 115, 22, 0.18);
+      margin: 0 auto;
     }
 
-    .access-program h2 {
+    .access-icon svg {
+      width: 90px;
+      height: 90px;
+    }
+
+    .access-content h2 {
       font-size: 36px;
       margin: 0 0 12px;
       letter-spacing: -0.7px;
+      color: var(--navy);
     }
 
-    .access-program p {
+    .access-content p {
       margin: 0;
       color: var(--text);
       font-size: 19px;
@@ -532,6 +537,15 @@
 
       .access-program {
         padding: 32px;
+        text-align: center;
+      }
+
+      .access-content h2 {
+        font-size: 30px;
+      }
+
+      .access-content p {
+        font-size: 18px;
       }
     }
   </style>
@@ -677,9 +691,24 @@
     <div class="section-alt">
       <section id="access">
         <div class="access-program">
-          <div class="access-badge">✦</div>
+          <div class="access-icon" aria-hidden="true">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="60" cy="60" r="48" fill="#fff7ed" stroke="#fb923c" stroke-width="4"/>
+              <path d="M28 60h64" stroke="#fb923c" stroke-width="3" stroke-linecap="round"/>
+              <path d="M60 12c13 14 20 30 20 48s-7 34-20 48c-13-14-20-30-20-48s7-34 20-48z"
+                    fill="none" stroke="#fb923c" stroke-width="3" stroke-linecap="round"/>
+              <path d="M20 48c12 6 26 9 40 9s28-3 40-9" fill="none" stroke="#fb923c" stroke-width="3" stroke-linecap="round"/>
+              <path d="M20 72c12-6 26-9 40-9s28 3 40 9" fill="none" stroke="#fb923c" stroke-width="3" stroke-linecap="round"/>
 
-          <div>
+              <rect x="36" y="42" width="48" height="34" rx="5" fill="#ffffff" stroke="#1f2937" stroke-width="4"/>
+              <path d="M42 52h36" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+              <path d="M42 61h24" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+              <path d="M48 82h24" stroke="#1f2937" stroke-width="4" stroke-linecap="round"/>
+              <path d="M60 76v8" stroke="#1f2937" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="access-content">
             <h2>Snapshot Education Access Program</h2>
             <p>
               Free licenses for qualifying schools and teachers in underserved communities.
