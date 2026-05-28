@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Preview | Snapshot Roster System</title>
+  <link rel="icon" href="logo.png" />
+
+  <style>
+    :root {
+      --orange: #f97316;
+      --cream: #fff7ed;
+      --maroon: #8b1e31;
+      --navy: #172033;
+      --text: #667085;
+      --border: #e7d8c8;
+      --panel: #fffaf3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at center, #fff7ed, #fffaf5 60%, #ffffff);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: flex;
+    }
+
+    .rail {
+      width: 58px;
+      background: rgba(255,255,255,0.75);
+      border-right: 1px solid var(--border);
+      padding: 18px 9px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      position: fixed;
+      inset: 0 auto 0 0;
+      z-index: 5;
+      backdrop-filter: blur(12px);
+    }
+
+    .rail img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+
+    .rail button,
+    .rail a {
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--maroon);
+      font-size: 18px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+    }
+
+    .rail button:hover,
+    .rail a:hover,
+    .rail .active {
+      background: var(--maroon);
+      color: white;
+    }
+
+    .side-panel {
+      position: fixed;
+      left: 58px;
+      top: 0;
+      bottom: 0;
+      width: 310px;
+      background: rgba(255, 252, 247, 0.96);
+      border-right: 1px solid var(--border);
+      z-index: 4;
+      padding: 28px 22px;
+      transform: translateX(-100%);
+      transition: transform 0.32s ease;
+      box-shadow: 16px 0 40px rgba(23, 32, 51, 0.08);
+    }
+
+    .side-panel.open {
+      transform: translateX(0);
+    }
+
+    .side-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .side-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--maroon);
+    }
+
+    .side-brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .teacher-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: var(--maroon);
+      font-size: 22px;
+    }
+
+    .teacher-box strong {
+      display: block;
+      color: var(--maroon);
+      margin-bottom: 3px;
+    }
+
+    .teacher-box span {
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .nav-label {
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .side-nav {
+      display: grid;
+      gap: 9px;
+    }
+
+    .side-nav a {
+      text-decoration: none;
+      color: #111827;
+      border: 1px solid var(--border);
+      background: #fffaf3;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-weight: 800;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .side-nav a.active {
+      background: var(--maroon);
+      color: white;
+      border-color: var(--maroon);
+    }
+
+    .main {
+      width: 100%;
+      padding: 62px 56px 40px 112px;
+      transition: padding-left 0.32s ease;
+    }
+
+    .main.shifted {
+      padding-left: 410px;
+    }
+
+    .hero-title {
+      max-width: 1180px;
+      margin: 0 auto 48px;
+    }
+
+    .hero-title h1 {
+      font-size: 34px;
+      margin: 0 0 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-title p {
+      margin: 0;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .dashboard {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 0.95fr;
+      gap: 26px;
+    }
+
+    .card {
+      background: rgba(255, 253, 248, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 18px 46px rgba(23, 32, 51, 0.06);
+    }
+
+    .next-class {
+      min-height: 280px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr 170px;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .label {
+      color: #ea580c;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 38px;
+    }
+
+    .next-class h2 {
+      font-size: 34px;
+      color: var(--maroon);
+      margin: 0 0 12px;
+    }
+
+    .time {
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .muted {
+      color: var(--text);
+    }
+
+    .book-orb {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffedc2 0 40%, #faeee4 41% 100%);
+      display: grid;
+      place-items: center;
+      font-size: 48px;
+      color: var(--orange);
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--maroon);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 15px 34px;
+      margin-top: 44px;
+      font-weight: 900;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.04);
+      box-shadow: 0 12px 24px rgba(139,30,49,.22);
+    }
+
+    .tools {
+      margin-top: 24px;
+      padding: 24px;
+    }
+
+    .tools h3,
+    .today h3 {
+      margin: 0 0 22px;
+      font-size: 21px;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .tool {
+      height: 112px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-weight: 900;
+      background: rgba(255,255,255,.58);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .tool:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 28px rgba(23,32,51,.1);
+    }
+
+    .today {
+      padding: 28px;
+      grid-row: span 2;
+    }
+
+    .today h3 {
+      color: var(--maroon);
+      font-size: 24px;
+    }
+
+    .mini-next {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 26px;
+    }
+
+    .mini-next .btn {
+      float: right;
+      margin: 10px 0 0;
+      padding: 12px 26px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #ffedc2;
+      color: #b45309;
+      padding: 7px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 10px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      background: #f8fafc;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .time-pill {
+      background: #f1f5f9;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      color: #475467;
+    }
+
+    .insight {
+      max-width: 1240px;
+      margin: 26px auto 0;
+      padding: 20px 28px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .insight strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .back-link {
+      position: fixed;
+      right: 22px;
+      top: 22px;
+      z-index: 8;
+      text-decoration: none;
+      background: white;
+      color: var(--maroon);
+      border: 1px solid var(--border);
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(23,32,51,.08);
+    }
+
+    @media (max-width: 1000px) {
+      .main,
+      .main.shifted {
+        padding: 82px 20px 40px 78px;
+      }
+
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .next-class,
+      .insight {
+        grid-template-columns: 1fr;
+      }
+
+      .tool-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .side-panel {
+        width: 280px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="back-link" href="index.html">← Main Website</a>
+
+  <div class="app">
+    <aside class="rail">
+      <img src="logo.png" alt="Snapshot Roster System Logo">
+      <button id="menuBtn">☰</button>
+      <button class="active">⌂</button>
+      <button>▣</button>
+      <button>☑</button>
+      <button>▤</button>
+      <button>▱</button>
+      <button>☼</button>
+    </aside>
+
+    <aside class="side-panel" id="sidePanel">
+      <div class="side-top">
+        <div class="side-brand">
+          <img src="logo.png" alt="Snapshot Roster System Logo">
+          <span>Roster System</span>
+        </div>
+        <button id="closeBtn" style="border:none;background:#fff3e6;border-radius:50%;width:34px;height:34px;cursor:pointer;">«</button>
+      </div>
+
+      <div class="teacher-box">
+        <div class="avatar">T</div>
+        <div>
+          <span>Welcome back,</span>
+          <strong>Teacher</strong>
+          <span>Teacher</span>
+        </div>
+      </div>
+
+      <div class="nav-label">NAVIGATION</div>
+
+      <nav class="side-nav">
+        <a class="active" href="#">⌂ Home</a>
+        <a href="#">▣ Class Session</a>
+        <a href="#">☑ Grading</a>
+        <a href="#">▤ Student Profile Card</a>
+        <a href="#">▱ Report Card Center</a>
+        <a href="#">☏ Communication Center</a>
+        <a href="#">♧ Manage Classes</a>
+        <a href="#">◷ View Weekly Schedule</a>
+        <a href="#">☼ Settings</a>
+      </nav>
+    </aside>
+
+    <main class="main" id="main">
+      <div class="hero-title">
+        <h1>Good evening, Teacher.</h1>
+        <p>You have 2 classes today. Let’s keep the day on track.</p>
+      </div>
+
+      <div class="dashboard">
+        <div>
+          <section class="card next-class">
+            <div>
+              <div class="label">Next Class</div>
+              <h2>Test 1</h2>
+              <div class="time">Friday · 7:00 PM - 8:00 PM</div>
+              <div class="muted">May 29 · 1 student</div>
+              <a class="btn" href="#">Start Class</a>
+            </div>
+
+            <div class="book-orb">▭</div>
+          </section>
+
+          <section class="card tools">
+            <h3>Quick Tools</h3>
+            <div class="tool-grid">
+              <div class="tool">☑<br>Grading</div>
+              <div class="tool">▤<br>Student<br>Profile Card</div>
+              <div class="tool">▱<br>Report Card<br>Center</div>
+              <div class="tool">▣<br>Manage<br>Classes</div>
+            </div>
+          </section>
+        </div>
+
+        <section class="card today">
+          <h3>▣ Today Center</h3>
+
+          <div class="mini-next">
+            <div class="label" style="margin-bottom:18px;">Next Class</div>
+            <strong>Test 1</strong>
+            <p><strong>7:00 PM - 8:00 PM</strong></p>
+            <span class="muted">May 29 · 1 student</span>
+            <a class="btn" href="#">Start Class</a>
+            <div style="clear:both;"></div>
+            <span class="badge">Attendance Needed</span>
+          </div>
+
+          <strong>Today’s Timeline</strong>
+
+          <div class="timeline">
+            <div class="timeline-row">
+              <div class="time-pill">4:00 PM</div>
+              <div>4:00 PM - 5:00 PM | E6 Hera |</div>
+              <span class="badge">Attendance Needed</span>
+            </div>
+
+            <div class="timeline-row">
+              <div class="time-pill">5:00 PM</div>
+              <div>5:00 PM - 6:00 PM | Same Days |</div>
+              <span class="badge">Attendance Needed</span>
+            </div>
+          </div>
+
+          <a class="btn" style="width:100%;text-align:center;background:#fff8ed;color:var(--maroon);border:1px solid var(--border);" href="#">
+            View Full Schedule
+          </a>
+        </section>
+      </div>
+
+      <section class="card insight">
+        <div>
+          <strong>▣ Attendance Insight</strong>
+          <span>2 classes need attendance for today.</span>
+        </div>
+
+        <a class="btn" style="margin:0;background:#fff0d9;color:var(--maroon);" href="#">Take Attendance</a>
+
+        <div>
+          <strong>☑ Tasks</strong>
+          <span>2 attendance tasks are open.</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const closeBtn = document.getElementById("closeBtn");
+    const sidePanel = document.getElementById("sidePanel");
+    const main = document.getElementById("main");
+
+    function togglePanel() {
+      sidePanel.classList.toggle("open");
+      main.classList.toggle("shifted");
+    }
+
+    menuBtn.addEventListener("click", togglePanel);
+    closeBtn.addEventListener("click", togglePanel);
+  </script>
+</body>
+</html>
