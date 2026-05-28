@@ -5,121 +5,507 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Snapshot Roster System</title>
   <style>
+    :root {
+      --orange: #f97316;
+      --orange-dark: #c2410c;
+      --cream: #fff7ed;
+      --navy: #172033;
+      --text: #475467;
+      --border: #e5e7eb;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #fff7ed, #f4f6f8);
-      color: #182230;
+      background: #fffaf5;
+      color: var(--navy);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .nav-button {
+      background: var(--orange);
+      color: white !important;
+      padding: 10px 18px;
+      border-radius: 999px;
+      box-shadow: 0 8px 18px rgba(249, 115, 22, 0.24);
     }
 
     .hero {
-      min-height: 100vh;
-      display: flex;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 82px 22px 54px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 44px;
       align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      text-align: center;
     }
 
-    .card {
-      max-width: 900px;
-      background: white;
-      padding: 56px 42px;
-      border-radius: 26px;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.10);
-    }
-
-    .logo {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      margin-bottom: 24px;
+    .eyebrow {
+      display: inline-block;
+      background: var(--cream);
+      color: var(--orange-dark);
+      border: 1px solid #fed7aa;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      margin-bottom: 18px;
     }
 
     h1 {
-      font-size: 46px;
-      margin: 0 0 12px;
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1.03;
+      margin: 0 0 18px;
+      letter-spacing: -1.8px;
     }
 
-    .tagline {
-      font-size: 22px;
-      font-weight: bold;
-      color: #f97316;
-      margin-bottom: 24px;
+    .hero p {
+      font-size: 21px;
+      line-height: 1.65;
+      color: var(--text);
+      margin: 0 0 28px;
+      max-width: 650px;
     }
 
-    .description {
-      font-size: 20px;
-      line-height: 1.6;
-      max-width: 720px;
-      margin: 0 auto 32px;
-      color: #475467;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    .actions {
+      display: flex;
       gap: 14px;
-      margin-top: 32px;
-    }
-
-    .feature {
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      border-radius: 16px;
-      padding: 16px;
-      font-weight: bold;
-      color: #7c2d12;
+      flex-wrap: wrap;
     }
 
     .button {
       display: inline-block;
-      margin-top: 34px;
-      padding: 14px 26px;
+      padding: 14px 24px;
       border-radius: 999px;
-      background: #f97316;
-      color: white;
       text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 8px 18px rgba(249,115,22,0.28);
+      font-weight: 800;
+    }
+
+    .primary {
+      background: var(--orange);
+      color: white;
+      box-shadow: 0 10px 24px rgba(249, 115, 22, 0.28);
+    }
+
+    .secondary {
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .preview {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 22px;
+      box-shadow: 0 24px 70px rgba(23, 32, 51, 0.12);
+    }
+
+    .preview-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .preview-title {
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .status {
+      background: #dcfce7;
+      color: #166534;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .mini-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      min-height: 116px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .mini-card span {
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    section {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 56px 22px;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 34px;
+    }
+
+    .section-heading h2 {
+      font-size: 38px;
+      margin: 0 0 12px;
+      letter-spacing: -0.8px;
+    }
+
+    .section-heading p {
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(23, 32, 51, 0.06);
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 22px;
+    }
+
+    .feature h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .teacher-section {
+      background: var(--navy);
+      color: white;
+      border-radius: 30px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .teacher-section h2 {
+      font-size: 36px;
+      margin: 0 0 14px;
+    }
+
+    .teacher-section p {
+      color: #d0d5dd;
+      font-size: 18px;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .teacher-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .teacher-list div {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 16px;
+      font-weight: 800;
+    }
+
+    .cta {
+      text-align: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 46px 28px;
+      box-shadow: 0 18px 50px rgba(23, 32, 51, 0.08);
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      margin: 0 0 12px;
+    }
+
+    .cta p {
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 auto 24px;
+      max-width: 680px;
     }
 
     footer {
-      margin-top: 36px;
-      font-size: 14px;
+      border-top: 1px solid var(--border);
+      background: white;
+      padding: 26px 22px;
       color: #667085;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 850px) {
+      .hero,
+      .teacher-section {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="hero">
-    <section class="card">
-      <img src="logo.png" alt="Snapshot Roster System Logo" class="logo" />
 
-      <h1>Snapshot Roster System</h1>
-      <div class="tagline">For Teachers by a Teacher.</div>
-
-      <p class="description">
-        Offline-first classroom management software for teachers and academies.
-        Organize classes, track attendance, manage seating charts, record grades,
-        and prepare reports — all in one simple dashboard.
-      </p>
-
-      <div class="features">
-        <div class="feature">Attendance</div>
-        <div class="feature">Seating Charts</div>
-        <div class="feature">Grades</div>
-        <div class="feature">Reports</div>
-        <div class="feature">Backups</div>
-        <div class="feature">Offline First</div>
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <img src="logo.png" alt="Snapshot Roster System Logo" />
+        <span>Snapshot Roster System</span>
       </div>
 
-      <a class="button" href="#">Coming Soon</a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#teachers">For Teachers</a>
+        <a href="#contact" class="nav-button">Coming Soon</a>
+      </div>
+    </nav>
+  </header>
 
-      <footer>
-        Copyright © 2026 Jonah Morris. All rights reserved.
-      </footer>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Classroom management software</div>
+
+        <h1>Manage your classroom with clarity.</h1>
+
+        <p>
+          Snapshot Roster System helps teachers organize classes, track attendance,
+          manage seating charts, record grades, and prepare reports from one simple,
+          offline-first dashboard.
+        </p>
+
+        <div class="actions">
+          <a href="#contact" class="button primary">Request Early Access</a>
+          <a href="#features" class="button secondary">View Features</a>
+        </div>
+      </div>
+
+      <div class="preview">
+        <div class="preview-top">
+          <div class="preview-title">Snapshot Dashboard</div>
+          <div class="status">Offline Ready</div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="mini-card">
+            <strong>Today’s Classes</strong>
+            <span>See the day’s schedule and start class quickly.</span>
+          </div>
+
+          <div class="mini-card">
+            <strong>Attendance</strong>
+            <span>Mark absences and save daily records with ease.</span>
+          </div>
+
+          <div class="mini-card">
+            <strong>Seating Charts</strong>
+            <span>Create visual layouts for every class.</span>
+          </div>
+
+          <div class="mini-card">
+            <strong>Reports</strong>
+            <span>Prepare student progress information faster.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="section-heading">
+        <h2>Built for everyday classroom work.</h2>
+        <p>
+          Designed to reduce repetitive paperwork and help teachers keep class records organized.
+        </p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">✓</div>
+          <h3>Attendance Tracking</h3>
+          <p>Record attendance by class and date, keeping student records organized over time.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">▦</div>
+          <h3>Seating Charts</h3>
+          <p>Create classroom layouts, assign students to seats, and print charts when needed.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">★</div>
+          <h3>Grades & Scores</h3>
+          <p>Track classroom performance, participation, assignments, and assessment results.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">📄</div>
+          <h3>Report Support</h3>
+          <p>Organize information needed for student reports and parent communication.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">↻</div>
+          <h3>Backup Tools</h3>
+          <p>Export, restore, and protect important classroom data with simple backup options.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>Offline First</h3>
+          <p>Designed for local use without depending on a constant internet connection.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="teachers">
+      <div class="teacher-section">
+        <div>
+          <h2>For teachers, by a teacher.</h2>
+          <p>
+            Snapshot Roster System is designed around real classroom routines:
+            attendance, seating, grading, schedules, student information, and reports.
+            It is made to feel practical, organized, and easy to use.
+          </p>
+        </div>
+
+        <div class="teacher-list">
+          <div>Designed for ESL classrooms</div>
+          <div>Useful for private academies</div>
+          <div>Simple local data management</div>
+          <div>Built around teacher workflow</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="cta">
+        <h2>Coming Soon</h2>
+        <p>
+          Snapshot Roster System is currently in development. Early access,
+          product details, and release information will be available soon.
+        </p>
+
+        <a href="mailto:jonahmorris0@gmail.com" class="button primary">Contact Developer</a>
+      </div>
     </section>
   </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>Copyright © 2026 Jonah Morris. All rights reserved.</div>
+      <div>Snapshot Roster System</div>
+    </div>
+  </footer>
+
 </body>
 </html>
