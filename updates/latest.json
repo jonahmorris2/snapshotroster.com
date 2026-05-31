@@ -1,0 +1,12 @@
+{
+  "appName": "Snapshot Roster System",
+  "latestVersion": "1.1.0",
+  "releaseDate": "2026-06-01",
+  "minimumSupportedVersion": "1.0.0",
+  "updateTitle": "Snapshot Roster System 1.1.0",
+  "summary": "Adds privacy lock, optional local JSON encryption, encrypted export bundles, portable/substitute readers, and improved import/export workflows.",
+  "downloadUrl": "https://www.snapshotroster.com/downloads/",
+  "releaseNotesUrl": "https://www.snapshotroster.com/releases/1.1.0.html",
+  "isCritical": false,
+  "isAvailable": true
+}
