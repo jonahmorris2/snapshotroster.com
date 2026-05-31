@@ -59,6 +59,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+      position: relative;
     }
 
     .brand {
@@ -91,6 +92,19 @@
 
     .nav-links a:hover {
       color: var(--orange);
+    }
+
+    .mobile-menu-button {
+      display: none;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      font-size: 24px;
+      font-weight: 900;
+      cursor: pointer;
     }
 
     .hero-wrap {
@@ -521,6 +535,7 @@
       0%, 100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(-8px);
       }
@@ -530,6 +545,7 @@
       0%, 100% {
         transform: translateY(0) scale(1);
       }
+
       50% {
         transform: translateY(18px) scale(1.06);
       }
@@ -545,10 +561,6 @@
 
       .features {
         grid-template-columns: 1fr;
-      }
-
-      .nav-links {
-        display: none;
       }
 
       .dashboard-grid {
@@ -568,9 +580,51 @@
         bottom: auto !important;
         margin-bottom: 14px;
       }
+
+      .brand {
+        font-size: 16px;
+      }
+
+      .mobile-menu-button {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 22px;
+        right: 22px;
+        background: rgba(255,255,255,0.98);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 14px;
+        box-shadow: 0 18px 46px rgba(23,32,51,.16);
+        flex-direction: column;
+        gap: 8px;
+        z-index: 50;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        color: var(--navy);
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: #fff7ed;
+        border: 1px solid #fed7aa;
+      }
+
+      .nav-links a:hover {
+        background: var(--orange);
+        color: white;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -579,15 +633,20 @@
         <img src="logo.png" alt="Snapshot Roster System Logo" />
         <span>Snapshot Roster System</span>
       </div>
-<div class="nav-links">
-  <a href="index.html">Home</a>
-  <a href="features.html">Features</a>
-  <a href="privacy-security.html">Privacy & Security</a>
-  <a href="teacher-workflow.html">Teacher Workflow</a>
-  <a href="education-access.html">Education Access</a>
-  <a href="live.html">Live Preview</a>
-  <a href="contact.html">Contact</a>
-</div>
+
+      <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open navigation menu" aria-expanded="false">
+        ☰
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="privacy-security.html">Privacy & Security</a>
+        <a href="teacher-workflow.html">Teacher Workflow</a>
+        <a href="education-access.html">Education Access</a>
+        <a href="live.html">Live Preview</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </nav>
   </header>
 
@@ -828,6 +887,27 @@
     revealElements.forEach((element) => {
       revealObserver.observe(element);
     });
+
+    const mobileMenuButton = document.getElementById("mobileMenuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    if (mobileMenuButton && navLinks) {
+      mobileMenuButton.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+
+        const isOpen = navLinks.classList.contains("open");
+        mobileMenuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        mobileMenuButton.textContent = isOpen ? "×" : "☰";
+      });
+
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          mobileMenuButton.setAttribute("aria-expanded", "false");
+          mobileMenuButton.textContent = "☰";
+        });
+      });
+    }
   </script>
 
 </body>
