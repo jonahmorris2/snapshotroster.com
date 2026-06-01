@@ -4,7 +4,7 @@
   "releaseDate": "2026-06-01",
   "minimumSupportedVersion": "1.0.0",
   "updateTitle": "Snapshot Roster System 1.1.0",
-  "summary": "Adds privacy lock, optional local JSON encryption, encrypted export bundles, portable/substitute readers, and improved import/export workflows.",
+  "summary": "Don't download yet. The next update will work on a better UI dashboard layout for the home screen, more personalization, and a way to avoid a buggy load screen, like a spinning load icon or something.",
   "downloadUrl": "https://www.snapshotroster.com/downloads/",
   "releaseNotesUrl": "https://www.snapshotroster.com/releases/1.1.0.html",
   "isCritical": false,
