@@ -4,9 +4,9 @@
   "releaseDate": "2026-06-01",
   "minimumSupportedVersion": "1.0.0",
   "updateTitle": "Snapshot Roster System 1.0.1",
-  "summary": "Don't download yet. The next update will work on a better UI dashboard layout for the home screen, more personalization, and a way to avoid a buggy load screen, like a spinning load icon or something.",
+  "summary": "This update is being prepared. Please do not download yet.",
   "downloadUrl": "https://www.snapshotroster.com/downloads/",
-  "releaseNotesUrl": "https://www.snapshotroster.com/releases/1.1.0.html",
+  "releaseNotesUrl": "https://www.snapshotroster.com/releases/1.0.1.html",
   "isCritical": false,
-  "isAvailable": true
+  "isAvailable": false
 }
