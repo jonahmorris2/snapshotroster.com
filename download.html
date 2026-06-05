@@ -83,6 +83,91 @@
     .nav-links a:hover {
       color:var(--orange);
     }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Download Snapshot Lite | Snapshot Roster System</title>
+
+  <link rel="icon" href="logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --orange:#f97316;
+      --orange-dark:#c2410c;
+      --cream:#fff7ed;
+      --navy:#172033;
+      --text:#475467;
+      --border:#e5e7eb;
+    }
+
+    * {
+      box-sizing:border-box;
+    }
+
+    body {
+      margin:0;
+      font-family:Inter,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 18% 18%,rgba(249,115,22,.16),transparent 30%),
+        linear-gradient(135deg,#fff7ed,#ffffff 54%,#f8fafc);
+      color:var(--navy);
+    }
+
+    header {
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav {
+      max-width:1160px;
+      margin:0 auto;
+      padding:16px 22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:relative;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+    }
+
+    .brand img {
+      width:42px;
+      height:42px;
+      object-fit:contain;
+    }
+
+    .nav-links {
+      display:flex;
+      gap:18px;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .nav-links a {
+      text-decoration:none;
+      color:var(--navy);
+    }
+
+    .nav-links a:hover {
+      color:var(--orange);
+    }
 
     .mobile-menu-button {
       display:none;
@@ -173,6 +258,17 @@
       box-shadow:0 18px 38px rgba(249,115,22,.28);
     }
 
+    .notice {
+      margin-top:28px;
+      background:#fff7ed;
+      border:1px solid #fed7aa;
+      border-radius:22px;
+      padding:20px;
+      color:#7c2d12;
+      line-height:1.6;
+      font-weight:700;
+    }
+
     .details {
       margin-top:54px;
       display:grid;
@@ -218,15 +314,11 @@
       font-size:18px;
     }
 
-    .privacy-note {
+    .analytics-note {
       margin-top:28px;
-      background:#fff7ed;
-      border:1px solid #fed7aa;
-      border-radius:22px;
-      padding:20px;
-      color:#7c2d12;
+      color:#667085;
+      font-size:14px;
       line-height:1.6;
-      font-weight:700;
     }
 
     footer {
@@ -331,9 +423,8 @@
 
       <p>
         Snapshot Lite is the free entry version of Snapshot Roster System.
-        It is designed to let teachers try the classroom workflow, explore the
-        interface, and begin organizing classroom information before upgrading
-        to a fuller version later.
+        It gives teachers a simple way to try the classroom workflow, explore
+        the dashboard, and begin using practical classroom organization tools.
       </p>
 
       <a class="button"
@@ -341,50 +432,67 @@
         Download Snapshot Lite
       </a>
 
-      <div class="privacy-note">
-        Basic download statistics may be collected through GitHub Release download counts
-        and simple website analytics. Snapshot does not sell user data.
+      <div class="notice">
+        Snapshot Lite is intended as a free version for teachers who want to try
+        the software before requesting access to fuller Snapshot features.
       </div>
     </div>
 
     <div class="download-card">
       <div class="download-icon">↓</div>
 
-      <h2>Simple installer-based download</h2>
+      <h2>Start with the Lite version</h2>
 
       <p>
-        The Lite installer should be hosted as a GitHub Release asset.
-        This allows GitHub to track how many times the installer file is downloaded,
-        while your website remains simple and static.
+        Snapshot Lite is designed for teachers who want a low-friction way to
+        explore the Snapshot classroom workflow. It is a starting point for
+        trying the system before moving to a more complete version later.
       </p>
     </div>
   </section>
 
   <section class="details">
     <div class="detail">
-      <h3>Free entry version</h3>
+      <h3>Free to try</h3>
       <p>
-        Snapshot Lite gives users a low-friction way to try the product before
-        requesting or purchasing a fuller version.
+        Snapshot Lite gives teachers a simple way to experience the product
+        without needing a paid license first.
       </p>
     </div>
 
     <div class="detail">
-      <h3>GitHub download tracking</h3>
+      <h3>Built for teachers</h3>
       <p>
-        When the installer is hosted as a GitHub Release asset, GitHub can track
-        the actual installer download count.
+        The system is designed around daily classroom tasks such as rosters,
+        attendance, schedules, seating charts, and student organization.
       </p>
     </div>
 
     <div class="detail">
-      <h3>Privacy-friendly approach</h3>
+      <h3>Local-first approach</h3>
       <p>
-        The download system focuses on basic interest tracking, not invasive
-        user surveillance.
+        Snapshot is designed as desktop classroom software with a focus on
+        local control, practical workflow, and offline access.
       </p>
     </div>
   </section>
+
+  <section class="steps">
+    <h2>How to get started</h2>
+
+    <ol>
+      <li>Click the Download Snapshot Lite button.</li>
+      <li>Save the installer to your computer.</li>
+      <li>Open the installer and follow the setup instructions.</li>
+      <li>Launch Snapshot Roster System.</li>
+      <li>Begin exploring the classroom workflow and available Lite features.</li>
+    </ol>
+  </section>
+
+  <div class="analytics-note">
+    Basic download statistics may be collected to understand interest in Snapshot Roster System
+    and improve the website. Snapshot does not sell user data.
+  </div>
 
 </main>
 
