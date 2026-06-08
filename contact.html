@@ -84,6 +84,22 @@
       color:var(--orange);
     }
 
+    .download-nav-button {
+  background: var(--orange);
+  color: white !important;
+  padding: 10px 16px;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(249,115,22,.24);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.download-nav-button:hover {
+  background: var(--orange);
+  color: white !important;
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(249,115,22,.32);
+}
+
     .mobile-menu-button {
       display:none;
       border:1px solid var(--border);
@@ -256,25 +272,22 @@
 
 <header>
   <nav class="nav">
-    <div class="brand">
-      <img src="logo.png" alt="Snapshot Roster System Logo">
-      <span>Snapshot Roster System</span>
-    </div>
+<a class="brand" href="index.html">
+  <img src="logo.png" alt="Snapshot Roster System Logo">
+  <span>Snapshot Roster System</span>
+</a>
 
     <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open navigation menu" aria-expanded="false">
       ☰
     </button>
 
-    <div class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="features.html">Features</a>
-      <a href="privacy-security.html">Privacy & Security</a>
-      <a href="teacher-workflow.html">Teacher Workflow</a>
-      <a href="education-access.html">Education Access</a>
-      <a href="live.html">Live Preview</a>
-      <a href="download.html">Download Lite</a>
-      <a href="contact.html">Contact</a>
-    </div>
+<div class="nav-links" id="navLinks">
+  <a href="features.html">Features</a>
+  <a href="live.html">Live Preview</a>
+  <a href="education-access.html">Education Access</a>
+  <a href="contact.html">Contact</a>
+  <a href="download.html" class="download-nav-button">Download Lite</a>
+</div>
   </nav>
 </header>
 
