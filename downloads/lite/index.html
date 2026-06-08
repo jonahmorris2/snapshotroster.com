@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Download Snapshot Lite</title>
+
+<link rel="icon" href="../../logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --orange:#f97316;
+    --orange-dark:#c2410c;
+    --navy:#172033;
+    --text:#475467;
+    --border:#e5e7eb;
+    --cream:#fff7ed;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:
+        radial-gradient(circle at 15% 15%,rgba(249,115,22,.14),transparent 30%),
+        linear-gradient(135deg,#fff7ed,#ffffff 60%,#f8fafc);
+    color:var(--navy);
+}
+
+main{
+    max-width:1000px;
+    margin:auto;
+    padding:80px 24px;
+}
+
+.download-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:34px;
+    padding:48px;
+    box-shadow:0 28px 70px rgba(23,32,51,.10);
+}
+
+.header{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:28px;
+}
+
+.logo{
+    width:80px;
+    height:80px;
+    object-fit:contain;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 14px;
+    border-radius:999px;
+    background:var(--cream);
+    border:1px solid #fed7aa;
+    color:var(--orange-dark);
+    font-weight:900;
+    margin-bottom:14px;
+}
+
+h1{
+    margin:0 0 10px;
+    font-size:52px;
+    line-height:1.05;
+    letter-spacing:-1px;
+}
+
+.subtitle{
+    font-size:20px;
+    color:var(--text);
+    line-height:1.7;
+}
+
+.version-box{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.info{
+    background:#f8fafc;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:20px;
+}
+
+.info-label{
+    font-size:13px;
+    font-weight:800;
+    color:#667085;
+    margin-bottom:6px;
+    text-transform:uppercase;
+}
+
+.info-value{
+    font-size:20px;
+    font-weight:900;
+}
+
+.download-section{
+    margin-top:40px;
+}
+
+.download-button{
+    display:inline-block;
+    padding:18px 32px;
+    border-radius:999px;
+    text-decoration:none;
+    background:var(--orange);
+    color:white;
+    font-weight:900;
+    font-size:18px;
+    box-shadow:0 14px 30px rgba(249,115,22,.28);
+    transition:.25s;
+}
+
+.download-button:hover{
+    transform:scale(1.05);
+}
+
+.links{
+    margin-top:24px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.links a{
+    color:var(--orange-dark);
+    font-weight:800;
+    text-decoration:none;
+}
+
+.links a:hover{
+    text-decoration:underline;
+}
+
+.requirements{
+    margin-top:48px;
+    padding:28px;
+    border-radius:24px;
+    background:#fffaf5;
+    border:1px solid #fed7aa;
+}
+
+.requirements h2{
+    margin-top:0;
+}
+
+.requirements ul{
+    line-height:1.9;
+}
+
+.footer-note{
+    margin-top:30px;
+    color:#667085;
+    font-size:14px;
+}
+
+@media(max-width:800px){
+
+.version-box{
+    grid-template-columns:1fr;
+}
+
+h1{
+    font-size:40px;
+}
+
+.header{
+    flex-direction:column;
+    text-align:center;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<main>
+
+<div class="download-card">
+
+    <div class="header">
+
+        <img src="../../logo.png"
+             alt="Snapshot Roster System Logo"
+             class="logo">
+
+        <div>
+            <div class="badge">Snapshot Lite</div>
+
+            <h1>Download Snapshot Lite</h1>
+
+            <div class="subtitle">
+                The free version of Snapshot Roster System designed for
+                teachers who want to explore the classroom workflow,
+                attendance tools, schedules, and classroom organization features.
+            </div>
+        </div>
+
+    </div>
+
+    <div class="version-box">
+
+        <div class="info">
+            <div class="info-label">Current Version</div>
+            <div class="info-value">1.1.0</div>
+        </div>
+
+        <div class="info">
+            <div class="info-label">Release Date</div>
+            <div class="info-value">June 2026</div>
+        </div>
+
+        <div class="info">
+            <div class="info-label">Edition</div>
+            <div class="info-value">Lite</div>
+        </div>
+
+    </div>
+
+    <div class="download-section">
+
+        <a class="download-button"
+           href="https://github.com/YOUR_USERNAME/YOUR_REPO/releases/latest/download/SnapshotRosterSystem_Lite_Setup.exe">
+
+            Download Snapshot Lite
+
+        </a>
+
+        <div class="links">
+
+            <a href="../../releases/lite/1.1.0.html">
+                View Release Notes
+            </a>
+
+            <a href="../../index.html">
+                Return to Main Website
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="requirements">
+
+        <h2>System Requirements</h2>
+
+        <ul>
+            <li>Windows 10 or Windows 11</li>
+            <li>.NET Desktop Runtime (if required by release)</li>
+            <li>Approximately 200 MB available storage</li>
+            <li>Internet connection only required for update checks</li>
+        </ul>
+
+    </div>
+
+    <div class="footer-note">
+
+        Snapshot Lite is intended as a free entry version of Snapshot
+        Roster System. Feature availability may differ from future
+        Premium editions.
+
+    </div>
+
+</div>
+
+</main>
+
+</body>
+</html>
