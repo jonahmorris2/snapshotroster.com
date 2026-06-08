@@ -212,6 +212,12 @@
       display: grid;
       grid-template-columns: 1.5fr 0.95fr;
       gap: 26px;
+      align-items: stretch;
+    }
+
+    .dashboard > div:first-child {
+      display: flex;
+      flex-direction: column;
     }
 
     .card {
@@ -287,6 +293,7 @@
     .tools {
       margin-top: 24px;
       padding: 24px;
+      flex: 1;
     }
 
     .tools h3,
