@@ -15,14 +15,21 @@
   <style>
     :root {
       --orange:#f97316;
+      --orange-dark:#c2410c;
+      --maroon:#8b1e31;
       --navy:#172033;
       --text:#475467;
       --border:#e5e7eb;
       --cream:#fff7ed;
+      --soft:#f8fafc;
     }
 
     * {
       box-sizing:border-box;
+    }
+
+    html {
+      scroll-behavior:smooth;
     }
 
     body {
@@ -56,6 +63,8 @@
       align-items:center;
       gap:12px;
       font-weight:900;
+      text-decoration:none;
+      color:var(--navy);
     }
 
     .brand img {
@@ -65,6 +74,7 @@
 
     .nav-links {
       display:flex;
+      align-items:center;
       gap:18px;
       font-size:14px;
       font-weight:800;
@@ -73,10 +83,26 @@
     .nav-links a {
       text-decoration:none;
       color:var(--navy);
+      transition:color .25s ease, transform .25s ease, box-shadow .25s ease;
     }
 
     .nav-links a:hover {
       color:var(--orange);
+    }
+
+    .download-nav-button {
+      background:var(--orange);
+      color:white !important;
+      padding:10px 16px;
+      border-radius:999px;
+      box-shadow:0 8px 18px rgba(249,115,22,.24);
+    }
+
+    .download-nav-button:hover {
+      background:var(--orange);
+      color:white !important;
+      transform:scale(1.05);
+      box-shadow:0 12px 24px rgba(249,115,22,.32);
     }
 
     .mobile-menu-button {
@@ -105,7 +131,7 @@
     .eyebrow {
       display:inline-block;
       background:var(--cream);
-      color:#c2410c;
+      color:var(--orange-dark);
       border:1px solid #fed7aa;
       padding:8px 14px;
       border-radius:999px;
@@ -199,6 +225,18 @@
       padding:56px 22px;
     }
 
+    .section-title {
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 38px;
+    }
+
+    .section-title h2 {
+      font-size:38px;
+      margin:0 0 12px;
+      letter-spacing:-.8px;
+    }
+
     .feature-row {
       display:grid;
       grid-template-columns:.8fr 1.2fr;
@@ -224,7 +262,7 @@
     }
 
     .feature-list div {
-      background:#f8fafc;
+      background:var(--soft);
       border:1px solid var(--border);
       border-radius:16px;
       padding:15px;
@@ -240,6 +278,157 @@
       place-items:center;
       font-size:66px;
       box-shadow:0 18px 46px rgba(23,32,51,.07);
+    }
+
+    .workflow-section {
+      background:linear-gradient(180deg,#fff7ed,#fffaf5 50%,#fff);
+      max-width:none;
+      padding:70px 22px;
+      margin-top:18px;
+    }
+
+    .workflow-inner {
+      max-width:1160px;
+      margin:0 auto;
+    }
+
+    .workflow-grid {
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    .daily-card {
+      background:white;
+      border:1px solid #eadfd2;
+      border-radius:32px;
+      padding:28px;
+      box-shadow:0 24px 60px rgba(139,30,49,.09);
+    }
+
+    .daily-card h3 {
+      margin:0 0 18px;
+      font-size:24px;
+      color:var(--maroon);
+    }
+
+    .today-row {
+      display:grid;
+      grid-template-columns:76px 1fr;
+      gap:14px;
+      align-items:center;
+      padding:14px;
+      border:1px solid #eadfd2;
+      border-radius:16px;
+      margin-bottom:12px;
+      background:#fffaf3;
+    }
+
+    .time {
+      font-weight:900;
+      color:var(--orange);
+    }
+
+    .workflow-points {
+      display:grid;
+      gap:14px;
+    }
+
+    .workflow-point {
+      background:white;
+      border:1px solid #eadfd2;
+      border-radius:22px;
+      padding:22px;
+      box-shadow:0 14px 36px rgba(23,32,51,.06);
+    }
+
+    .workflow-point h3 {
+      margin:0 0 8px;
+      font-size:22px;
+    }
+
+    .security-section {
+      max-width:none;
+      background:
+        radial-gradient(circle at 84% 16%,rgba(249,115,22,.24),transparent 32%),
+        radial-gradient(circle at 12% 90%,rgba(249,115,22,.12),transparent 28%),
+        #0b1020;
+      color:white;
+      padding:76px 22px;
+    }
+
+    .security-inner {
+      max-width:1160px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:34px;
+      align-items:center;
+    }
+
+    .security-section h2 {
+      font-size:38px;
+      margin:0 0 14px;
+    }
+
+    .security-section p {
+      color:#cbd5e1;
+    }
+
+    .security-list {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+
+    .security-list div {
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:16px;
+      padding:16px;
+      font-weight:800;
+    }
+
+    .substitute-band {
+      background:linear-gradient(135deg,#fff7ed,#ffffff);
+      border:1px solid #fed7aa;
+      border-radius:32px;
+      padding:42px;
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:28px;
+      align-items:center;
+      box-shadow:0 20px 54px rgba(249,115,22,.12);
+    }
+
+    .sub-icon {
+      width:94px;
+      height:94px;
+      border-radius:30px;
+      background:linear-gradient(135deg,var(--orange),#ffb86b);
+      color:white;
+      display:grid;
+      place-items:center;
+      font-size:42px;
+      box-shadow:0 18px 38px rgba(249,115,22,.28);
+    }
+
+    .link-row {
+      margin-top:18px;
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .text-link {
+      color:var(--orange-dark);
+      font-weight:900;
+      text-decoration:none;
+    }
+
+    .text-link:hover {
+      text-decoration:underline;
     }
 
     footer {
@@ -263,7 +452,11 @@
       .dash,
       .feature-row,
       .feature-row:nth-child(even),
-      .feature-list {
+      .feature-list,
+      .workflow-grid,
+      .security-inner,
+      .security-list,
+      .substitute-band {
         grid-template-columns:1fr;
       }
 
@@ -307,6 +500,10 @@
         background:var(--orange);
         color:white;
       }
+
+      .download-nav-button {
+        text-align:center;
+      }
     }
   </style>
 </head>
@@ -315,24 +512,21 @@
 
 <header>
   <nav class="nav">
-    <div class="brand">
+    <a class="brand" href="index.html">
       <img src="logo.png" alt="Snapshot Roster System Logo">
       <span>Snapshot Roster System</span>
-    </div>
+    </a>
 
     <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open navigation menu" aria-expanded="false">
       ☰
     </button>
 
     <div class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
       <a href="features.html">Features</a>
-      <a href="privacy-security.html">Privacy & Security</a>
-      <a href="teacher-workflow.html">Teacher Workflow</a>
-      <a href="education-access.html">Education Access</a>
       <a href="live.html">Live Preview</a>
-      <a href="download.html">Download Lite</a>
+      <a href="education-access.html">Education Access</a>
       <a href="contact.html">Contact</a>
+      <a href="download.html" class="download-nav-button">Download Lite</a>
     </div>
   </nav>
 </header>
@@ -347,8 +541,8 @@
 
     <p>
       Snapshot brings attendance, grading, seating charts, student profiles,
-      reports, data exports, and substitute handoffs into one classroom
-      operations system.
+      reports, teacher workflow tools, privacy controls, and substitute handoffs
+      into one classroom operations system.
     </p>
   </div>
 
@@ -392,6 +586,12 @@
 </section>
 
 <section>
+  <div class="section-title">
+    <h2>Core classroom operations</h2>
+    <p>
+      Snapshot organizes the records and classroom tasks teachers use every day.
+    </p>
+  </div>
 
   <div class="feature-row">
     <div>
@@ -436,25 +636,127 @@
       <div>Release updates</div>
     </div>
   </div>
+</section>
 
-  <div class="feature-row">
-    <div class="feature-list">
-      <div>Read-only handoff</div>
-      <div>Limited substitute data</div>
-      <div>Browser-based reader</div>
-      <div>Sensitive data protection</div>
+<section class="workflow-section">
+  <div class="workflow-inner">
+    <div class="section-title">
+      <h2>Teacher Workflow</h2>
+      <p>
+        Snapshot is designed around the rhythm of a teaching day, not only around data entry.
+      </p>
     </div>
+
+    <div class="workflow-grid">
+      <div class="daily-card">
+        <h3>Today Center</h3>
+
+        <div class="today-row">
+          <div class="time">4:00</div>
+          <div>
+            <strong>MATH212</strong><br>
+            <span>Attendance needed</span>
+          </div>
+        </div>
+
+        <div class="today-row">
+          <div class="time">5:00</div>
+          <div>
+            <strong>ENG101</strong><br>
+            <span>Class notes ready</span>
+          </div>
+        </div>
+
+        <div class="today-row">
+          <div class="time">7:00</div>
+          <div>
+            <strong>Start next class</strong><br>
+            <span>Seating chart and roster available</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="workflow-points">
+        <div class="workflow-point">
+          <h3>Prepare for class</h3>
+          <p>
+            Review today’s classes, schedule, class details, and student information before students arrive.
+          </p>
+        </div>
+
+        <div class="workflow-point">
+          <h3>Start class quickly</h3>
+          <p>
+            Jump from the dashboard into attendance, seating charts, grading, or student profiles.
+          </p>
+        </div>
+
+        <div class="workflow-point">
+          <h3>Use records later</h3>
+          <p>
+            Generate reports, review performance summaries, prepare communication, or export substitute bundles.
+          </p>
+        </div>
+
+        <div class="link-row">
+          <a class="text-link" href="teacher-workflow.html">View full Teacher Workflow page →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="security-section">
+  <div class="security-inner">
+    <div>
+      <div class="eyebrow">Privacy & Security</div>
+
+      <h2>Classroom data should stay under teacher control.</h2>
+
+      <p>
+        Snapshot uses a layered privacy model designed for local classroom records,
+        app access protection, optional local encryption, protected exports, and limited
+        substitute access.
+      </p>
+
+      <div class="link-row">
+        <a class="text-link" href="privacy-security.html" style="color:#fed7aa;">View full Privacy & Security page →</a>
+      </div>
+    </div>
+
+    <div class="security-list">
+      <div>Local-first storage</div>
+      <div>Optional app passcode</div>
+      <div>Startup lock screen</div>
+      <div>Manual lock mode</div>
+      <div>Salted passcode hashing</div>
+      <div>Optional local encryption</div>
+      <div>Encrypted export bundles</div>
+      <div>Separate export passcodes</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="substitute-band">
+    <div class="sub-icon">↗</div>
 
     <div>
       <h2>Substitute Teacher Bundle</h2>
 
       <p>
-        One of Snapshot’s strongest differentiators: create limited handoff
-        packages for substitute teachers without exposing the full application.
+        Give substitute teachers the information they need without giving them access
+        to the full application, full gradebook, or every classroom record.
       </p>
+
+      <div class="feature-list">
+        <div>Read-only handoff</div>
+        <div>Limited substitute data</div>
+        <div>Browser-based reader</div>
+        <div>Sensitive data protection</div>
+      </div>
     </div>
   </div>
-
 </section>
 
 </main>
