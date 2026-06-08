@@ -83,91 +83,6 @@
     .nav-links a:hover {
       color:var(--orange);
     }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Download Snapshot Lite | Snapshot Roster System</title>
-
-  <link rel="icon" href="logo.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --orange:#f97316;
-      --orange-dark:#c2410c;
-      --cream:#fff7ed;
-      --navy:#172033;
-      --text:#475467;
-      --border:#e5e7eb;
-    }
-
-    * {
-      box-sizing:border-box;
-    }
-
-    body {
-      margin:0;
-      font-family:Inter,Arial,sans-serif;
-      background:
-        radial-gradient(circle at 18% 18%,rgba(249,115,22,.16),transparent 30%),
-        linear-gradient(135deg,#fff7ed,#ffffff 54%,#f8fafc);
-      color:var(--navy);
-    }
-
-    header {
-      position:sticky;
-      top:0;
-      z-index:10;
-      background:rgba(255,255,255,.92);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--border);
-    }
-
-    .nav {
-      max-width:1160px;
-      margin:0 auto;
-      padding:16px 22px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:relative;
-    }
-
-    .brand {
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:900;
-    }
-
-    .brand img {
-      width:42px;
-      height:42px;
-      object-fit:contain;
-    }
-
-    .nav-links {
-      display:flex;
-      gap:18px;
-      font-size:14px;
-      font-weight:800;
-    }
-
-    .nav-links a {
-      text-decoration:none;
-      color:var(--navy);
-    }
-
-    .nav-links a:hover {
-      color:var(--orange);
-    }
 
     .mobile-menu-button {
       display:none;
@@ -289,6 +204,34 @@
       font-size:22px;
     }
 
+    .compatibility {
+      margin-top:54px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .compat-card {
+      background:white;
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:0 16px 40px rgba(23,32,51,.06);
+    }
+
+    .compat-card h2 {
+      margin:0 0 12px;
+      font-size:28px;
+    }
+
+    .compat-card ul {
+      margin:0;
+      padding-left:20px;
+      color:var(--text);
+      line-height:1.8;
+      font-size:17px;
+    }
+
     .steps {
       margin-top:54px;
       background:#172033;
@@ -339,7 +282,8 @@
 
     @media(max-width:900px) {
       .hero,
-      .details {
+      .details,
+      .compatibility {
         grid-template-columns:1fr;
       }
 
@@ -433,8 +377,9 @@
       </a>
 
       <div class="notice">
-        Snapshot Lite is intended as a free version for teachers who want to try
-        the software before requesting access to fuller Snapshot features.
+        The current Snapshot Lite version is compatible with Windows 10 and Windows 11.
+        Android and Linux compatibility are future goals, but they are not available in
+        the current Lite desktop release.
       </div>
     </div>
 
@@ -477,12 +422,34 @@
     </div>
   </section>
 
+  <section class="compatibility">
+    <div class="compat-card">
+      <h2>Current compatibility</h2>
+      <ul>
+        <li>Windows 10 compatible</li>
+        <li>Windows 11 compatible</li>
+        <li>Desktop installer-based setup</li>
+        <li>Designed for local classroom use</li>
+      </ul>
+    </div>
+
+    <div class="compat-card">
+      <h2>Future platform goals</h2>
+      <ul>
+        <li>Android compatibility is a future goal</li>
+        <li>Linux compatibility is a future goal</li>
+        <li>Portable data support helps prepare for future platform expansion</li>
+        <li>Future availability is not guaranteed and depends on development progress</li>
+      </ul>
+    </div>
+  </section>
+
   <section class="steps">
     <h2>How to get started</h2>
 
     <ol>
       <li>Click the Download Snapshot Lite button.</li>
-      <li>Save the installer to your computer.</li>
+      <li>Save the installer to your Windows 10 or Windows 11 computer.</li>
       <li>Open the installer and follow the setup instructions.</li>
       <li>Launch Snapshot Roster System.</li>
       <li>Begin exploring the classroom workflow and available Lite features.</li>
