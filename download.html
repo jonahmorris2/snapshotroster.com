@@ -60,6 +60,8 @@
       align-items:center;
       gap:12px;
       font-weight:900;
+      text-decoration:none;
+      color:var(--navy);
     }
 
     .brand img {
@@ -100,15 +102,6 @@
       box-shadow: 0 12px 24px rgba(249,115,22,.32);
     }
 
-    .brand {
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:900;
-      text-decoration:none;
-      color:var(--navy);
-    }
-    
     .mobile-menu-button {
       display:none;
       border:1px solid var(--border);
@@ -175,6 +168,71 @@
     .button:hover {
       transform:scale(1.05);
       box-shadow:0 18px 38px rgba(249,115,22,.38);
+    }
+
+    .download-action-row {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .download-primary {
+      margin-top: 0;
+      font-size: 18px;
+      padding: 18px 30px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      border: 2px solid #ffedd5;
+      box-shadow:
+        0 18px 38px rgba(249,115,22,.38),
+        0 0 0 6px rgba(249,115,22,.10);
+    }
+
+    .download-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow:
+        0 24px 48px rgba(249,115,22,.46),
+        0 0 0 8px rgba(249,115,22,.14);
+    }
+
+    .download-arrow {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 22px;
+    }
+
+    .windows-badge {
+      display: inline-block;
+      margin-top: 12px;
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .smartscreen-warning {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-left: 5px solid var(--orange);
+      border-radius: 18px;
+      padding: 16px 18px;
+      color: #7c2d12;
+      line-height: 1.55;
+      max-width: 430px;
+    }
+
+    .smartscreen-warning strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .smartscreen-warning span {
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .download-card {
@@ -308,8 +366,14 @@
     @media(max-width:900px) {
       .hero,
       .details,
-      .compatibility {
+      .compatibility,
+      .download-action-row {
         grid-template-columns:1fr;
+      }
+
+      .download-primary {
+        width:100%;
+        text-align:center;
       }
 
       .brand {
@@ -393,10 +457,25 @@
         the dashboard, and begin using practical classroom organization tools.
       </p>
 
-      <a class="button"
-         href="https://github.com/YOUR_USERNAME/YOUR_REPO/releases/latest/download/SnapshotRosterSystem_Lite_Setup.exe">
-        Download Snapshot Lite
-      </a>
+      <div class="download-action-row">
+        <div>
+          <a class="button download-primary"
+             href="https://github.com/YOUR_USERNAME/YOUR_REPO/releases/latest/download/SnapshotRosterSystem_Lite_Setup.exe">
+            <span class="download-arrow">↓</span>
+            Download Snapshot Lite
+          </a>
+
+          <div class="windows-badge">For Windows 10 & Windows 11</div>
+        </div>
+
+        <div class="smartscreen-warning">
+          <strong>Windows SmartScreen Notice</strong>
+          <span>
+            Because Snapshot is a new independent Windows app, Windows may show a SmartScreen warning during early releases.
+            Only download Snapshot from the official snapshotroster.com website.
+          </span>
+        </div>
+      </div>
 
       <div class="notice">
         The current Snapshot Lite version is compatible with Windows 10 and Windows 11.
