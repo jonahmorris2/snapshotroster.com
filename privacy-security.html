@@ -334,6 +334,22 @@
         background:var(--orange);
         color:white;
       }
+
+      #google_translate_element {
+  font-size: 13px;
+}
+
+.goog-te-gadget {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 12px !important;
+}
+
+.goog-te-gadget-simple {
+  border: 1px solid var(--border) !important;
+  border-radius: 999px !important;
+  padding: 6px 10px !important;
+  background: white !important;
+}
     }
   </style>
 </head>
@@ -351,13 +367,14 @@
       ☰
     </button>
 
-    <div class="nav-links" id="navLinks">
-      <a href="features.html">Features</a>
-      <a href="live.html">Live Preview</a>
-      <a href="education-access.html">Education Access</a>
-      <a href="contact.html">Contact</a>
-      <a href="download.html" class="download-nav-button">Download Lite</a>
-    </div>
+<div class="nav-links" id="navLinks">
+  <a href="features.html">Features</a>
+  <a href="live.html">Live Preview</a>
+  <a href="education-access.html">Education Access</a>
+  <a href="contact.html">Contact</a>
+  <a href="download.html" class="download-nav-button">Download Lite</a>
+  <div id="google_translate_element"></div>
+</div>
   </nav>
 </header>
 
@@ -485,5 +502,22 @@
   }
 </script>
 
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: 'en',
+        includedLanguages: 'en,ko,ja,zh-CN,es,fr,de',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      },
+      'google_translate_element'
+    );
+  }
+</script>
+
+<script type="text/javascript"
+  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+  
 </body>
 </html>
