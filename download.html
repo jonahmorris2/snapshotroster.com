@@ -18,13 +18,19 @@
       --orange:#f97316;
       --orange-dark:#c2410c;
       --cream:#fff7ed;
+      --cream-light:#fffaf5;
       --navy:#172033;
       --text:#475467;
       --border:#e5e7eb;
+      --warning:#7c2d12;
     }
 
     * {
       box-sizing:border-box;
+    }
+
+    html {
+      scroll-behavior:smooth;
     }
 
     body {
@@ -32,6 +38,7 @@
       font-family:Inter,Arial,sans-serif;
       background:
         radial-gradient(circle at 18% 18%,rgba(249,115,22,.16),transparent 30%),
+        radial-gradient(circle at 84% 20%,rgba(249,115,22,.09),transparent 24%),
         linear-gradient(135deg,#fff7ed,#ffffff 54%,#f8fafc);
       color:var(--navy);
     }
@@ -72,6 +79,7 @@
 
     .nav-links {
       display:flex;
+      align-items:center;
       gap:18px;
       font-size:14px;
       font-weight:800;
@@ -87,19 +95,19 @@
     }
 
     .download-nav-button {
-      background: var(--orange);
-      color: white !important;
-      padding: 10px 16px;
-      border-radius: 999px;
-      box-shadow: 0 8px 18px rgba(249,115,22,.24);
-      transition: transform .25s ease, box-shadow .25s ease;
+      background:var(--orange);
+      color:white !important;
+      padding:10px 16px;
+      border-radius:999px;
+      box-shadow:0 8px 18px rgba(249,115,22,.24);
+      transition:transform .25s ease, box-shadow .25s ease;
     }
 
     .download-nav-button:hover {
-      background: var(--orange);
-      color: white !important;
-      transform: scale(1.05);
-      box-shadow: 0 12px 24px rgba(249,115,22,.32);
+      background:var(--orange);
+      color:white !important;
+      transform:scale(1.05);
+      box-shadow:0 12px 24px rgba(249,115,22,.32);
     }
 
     .mobile-menu-button {
@@ -115,16 +123,32 @@
       cursor:pointer;
     }
 
+    #google_translate_element {
+      font-size:13px;
+    }
+
+    .goog-te-gadget {
+      font-family:Inter, Arial, sans-serif !important;
+      font-size:12px !important;
+    }
+
+    .goog-te-gadget-simple {
+      border:1px solid var(--border) !important;
+      border-radius:999px !important;
+      padding:6px 10px !important;
+      background:white !important;
+    }
+
     main {
       max-width:1160px;
       margin:0 auto;
-      padding:86px 22px 70px;
+      padding:80px 22px 70px;
     }
 
     .hero {
       display:grid;
-      grid-template-columns:1fr .9fr;
-      gap:44px;
+      grid-template-columns:1.05fr .95fr;
+      gap:48px;
       align-items:center;
     }
 
@@ -140,9 +164,9 @@
     }
 
     h1 {
-      font-size:clamp(42px,6vw,68px);
-      line-height:1.03;
-      letter-spacing:-1.8px;
+      font-size:clamp(44px,6vw,70px);
+      line-height:1.02;
+      letter-spacing:-2px;
       margin:0 0 18px;
     }
 
@@ -152,119 +176,139 @@
       font-size:18px;
     }
 
-    .button {
-      display:inline-block;
-      margin-top:18px;
-      padding:15px 26px;
-      border-radius:999px;
-      background:var(--orange);
+    .hero-copy p {
+      max-width:620px;
+      margin-bottom:0;
+    }
+
+    .download-panel {
+      background:white;
+      border:1px solid var(--border);
+      border-radius:34px;
+      padding:34px;
+      box-shadow:0 30px 80px rgba(23,32,51,.13);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .download-panel::before {
+      content:"";
+      position:absolute;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:rgba(249,115,22,.13);
+      filter:blur(45px);
+      right:-80px;
+      top:-80px;
+    }
+
+    .download-panel-content {
+      position:relative;
+      z-index:1;
+    }
+
+    .download-icon {
+      width:78px;
+      height:78px;
+      border-radius:24px;
+      background:linear-gradient(135deg,var(--orange),#ffb86b);
       color:white;
-      text-decoration:none;
-      font-weight:900;
-      box-shadow:0 12px 28px rgba(249,115,22,.28);
-      transition:transform .25s ease, box-shadow .25s ease;
+      display:grid;
+      place-items:center;
+      font-size:40px;
+      margin-bottom:22px;
+      box-shadow:0 18px 38px rgba(249,115,22,.28);
     }
 
-    .button:hover {
-      transform:scale(1.05);
-      box-shadow:0 18px 38px rgba(249,115,22,.38);
+    .download-panel h2 {
+      font-size:30px;
+      margin:0 0 12px;
+      letter-spacing:-.5px;
     }
 
-    .download-action-row {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 18px;
-      align-items: center;
+    .download-panel p {
+      margin:0 0 22px;
     }
 
     .download-primary {
-      margin-top: 0;
-      font-size: 18px;
-      padding: 18px 30px;
-      background: linear-gradient(135deg, #f97316, #ea580c);
-      border: 2px solid #ffedd5;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width:100%;
+      padding:18px 28px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#f97316,#ea580c);
+      color:white;
+      text-decoration:none;
+      font-size:18px;
+      font-weight:900;
+      border:2px solid #ffedd5;
       box-shadow:
         0 18px 38px rgba(249,115,22,.38),
         0 0 0 6px rgba(249,115,22,.10);
+      transition:transform .25s ease, box-shadow .25s ease;
     }
 
     .download-primary:hover {
-      transform: translateY(-3px) scale(1.03);
+      transform:translateY(-3px) scale(1.02);
       box-shadow:
         0 24px 48px rgba(249,115,22,.46),
         0 0 0 8px rgba(249,115,22,.14);
     }
 
     .download-arrow {
-      display: inline-block;
-      margin-right: 8px;
-      font-size: 22px;
+      font-size:24px;
+      line-height:1;
     }
 
     .windows-badge {
-      display: inline-block;
-      margin-top: 12px;
-      background: white;
-      border: 1px solid var(--border);
-      color: var(--navy);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 13px;
-      font-weight: 900;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:14px;
+      background:#f8fafc;
+      border:1px solid var(--border);
+      color:var(--navy);
+      border-radius:999px;
+      padding:8px 13px;
+      font-size:13px;
+      font-weight:900;
     }
 
     .smartscreen-warning {
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      border-left: 5px solid var(--orange);
-      border-radius: 18px;
-      padding: 16px 18px;
-      color: #7c2d12;
-      line-height: 1.55;
-      max-width: 430px;
+      margin-top:20px;
+      background:#fff7ed;
+      border:1px solid #fed7aa;
+      border-left:5px solid var(--orange);
+      border-radius:18px;
+      padding:17px 18px;
+      color:var(--warning);
+      line-height:1.55;
     }
 
     .smartscreen-warning strong {
-      display: block;
-      margin-bottom: 5px;
+      display:block;
+      margin-bottom:6px;
+      font-size:15px;
     }
 
     .smartscreen-warning span {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .download-card {
-      background:white;
-      border:1px solid var(--border);
-      border-radius:34px;
-      padding:34px;
-      box-shadow:0 28px 70px rgba(23,32,51,.12);
-    }
-
-    .download-icon {
-      width:92px;
-      height:92px;
-      border-radius:28px;
-      background:linear-gradient(135deg,var(--orange),#ffb86b);
-      color:white;
-      display:grid;
-      place-items:center;
-      font-size:42px;
-      margin-bottom:22px;
-      box-shadow:0 18px 38px rgba(249,115,22,.28);
+      font-size:14px;
+      font-weight:700;
     }
 
     .notice {
-      margin-top:28px;
-      background:#fff7ed;
+      margin-top:34px;
+      background:white;
       border:1px solid #fed7aa;
       border-radius:22px;
-      padding:20px;
-      color:#7c2d12;
+      padding:20px 22px;
+      color:var(--warning);
       line-height:1.6;
-      font-weight:700;
+      font-weight:750;
+      box-shadow:0 14px 34px rgba(249,115,22,.08);
     }
 
     .details {
@@ -280,11 +324,24 @@
       border-radius:24px;
       padding:24px;
       box-shadow:0 16px 40px rgba(23,32,51,.06);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .detail:hover {
+      transform:translateY(-5px);
+      border-color:#fed7aa;
+      box-shadow:0 20px 44px rgba(23,32,51,.10);
     }
 
     .detail h3 {
       margin:0 0 10px;
       font-size:22px;
+      letter-spacing:-.3px;
+    }
+
+    .detail p {
+      margin:0;
+      font-size:16px;
     }
 
     .compatibility {
@@ -298,13 +355,14 @@
       background:white;
       border:1px solid var(--border);
       border-radius:28px;
-      padding:28px;
+      padding:30px;
       box-shadow:0 16px 40px rgba(23,32,51,.06);
     }
 
     .compat-card h2 {
-      margin:0 0 12px;
+      margin:0 0 14px;
       font-size:28px;
+      letter-spacing:-.5px;
     }
 
     .compat-card ul {
@@ -330,6 +388,7 @@
     .steps h2 {
       font-size:36px;
       margin:0 0 18px;
+      letter-spacing:-.7px;
     }
 
     .steps ol {
@@ -364,16 +423,22 @@
     }
 
     @media(max-width:900px) {
+      main {
+        padding:54px 18px 60px;
+      }
+
       .hero,
       .details,
-      .compatibility,
-      .download-action-row {
+      .compatibility {
         grid-template-columns:1fr;
       }
 
-      .download-primary {
-        width:100%;
-        text-align:center;
+      .hero {
+        gap:30px;
+      }
+
+      .download-panel {
+        padding:26px;
       }
 
       .brand {
@@ -416,23 +481,6 @@
         background:var(--orange);
         color:white;
       }
-
-      #google_translate_element {
-  font-size: 13px;
-}
-
-.goog-te-gadget {
-  font-family: Inter, Arial, sans-serif !important;
-  font-size: 12px !important;
-}
-
-.goog-te-gadget-simple {
-  border: 1px solid var(--border) !important;
-  border-radius: 999px !important;
-  padding: 6px 10px !important;
-  background: white !important;
-}
-      
     }
   </style>
 </head>
@@ -450,21 +498,21 @@
       ☰
     </button>
 
-<div class="nav-links" id="navLinks">
-  <a href="features.html">Features</a>
-  <a href="live.html">Live Preview</a>
-  <a href="education-access.html">Education Access</a>
-  <a href="contact.html">Contact</a>
-  <a href="download.html" class="download-nav-button">Download Lite</a>
-  <div id="google_translate_element"></div>
-</div>
+    <div class="nav-links" id="navLinks">
+      <a href="features.html">Features</a>
+      <a href="live.html">Live Preview</a>
+      <a href="education-access.html">Education Access</a>
+      <a href="contact.html">Contact</a>
+      <a href="download.html" class="download-nav-button">Download Lite</a>
+      <div id="google_translate_element"></div>
+    </div>
   </nav>
 </header>
 
 <main>
 
   <section class="hero">
-    <div>
+    <div class="hero-copy">
       <div class="eyebrow">Free Lite Version</div>
 
       <h1>Download Snapshot Lite.</h1>
@@ -475,16 +523,31 @@
         the dashboard, and begin using practical classroom organization tools.
       </p>
 
-      <div class="download-action-row">
-        <div>
-          <a class="button download-primary"
-             href="https://github.com/jonahmorris2/snapshotroster.com/releases/download/v1.0.0/SnapshotRosterSystem_Lite_Setup_1.0.0.exe">
-            <span class="download-arrow">↓</span>
-            Download Snapshot Lite
-          </a>
+      <div class="notice">
+        The current Snapshot Lite version is compatible with Windows 10 and Windows 11.
+        Android and Linux compatibility are future goals, but they are not available in
+        the current Lite desktop release.
+      </div>
+    </div>
 
-          <div class="windows-badge">For Windows 10 & Windows 11</div>
-        </div>
+    <div class="download-panel">
+      <div class="download-panel-content">
+        <div class="download-icon">↓</div>
+
+        <h2>Start with Snapshot Lite</h2>
+
+        <p>
+          Download the Windows installer and begin exploring Snapshot’s local-first
+          classroom workflow.
+        </p>
+
+        <a class="download-primary"
+           href="https://github.com/jonahmorris2/snapshotroster.com/releases/download/v1.0.0/SnapshotRosterSystem_Lite_Setup_1.0.0.exe">
+          <span class="download-arrow">↓</span>
+          Download Snapshot Lite
+        </a>
+
+        <div class="windows-badge">For Windows 10 & Windows 11</div>
 
         <div class="smartscreen-warning">
           <strong>Windows SmartScreen Notice</strong>
@@ -494,24 +557,6 @@
           </span>
         </div>
       </div>
-
-      <div class="notice">
-        The current Snapshot Lite version is compatible with Windows 10 and Windows 11.
-        Android and Linux compatibility are future goals, but they are not available in
-        the current Lite desktop release.
-      </div>
-    </div>
-
-    <div class="download-card">
-      <div class="download-icon">↓</div>
-
-      <h2>Start with the Lite version</h2>
-
-      <p>
-        Snapshot Lite is designed for teachers who want a low-friction way to
-        explore the Snapshot classroom workflow. It is a starting point for
-        trying the system before moving to a more complete version later.
-      </p>
     </div>
   </section>
 
@@ -632,6 +677,6 @@
 <script type="text/javascript"
   src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 </script>
-  
+
 </body>
 </html>
